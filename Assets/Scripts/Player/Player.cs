@@ -20,11 +20,10 @@ namespace STGO.Gameplay
         [SerializeField] private LayerMask _obstaclesLayers;
 
         [Header("WINNING:")]
-        [SerializeField] private Transform _winningDoor;
-        [SerializeField] private Animator _winningDoorAnimator;
         [SerializeField] private float _winningTweenDuration = 2f;
 
-        [Inject] private IGameStateManager _gameStateManager;
+        private Transform _winningDoor;
+        private Animator _winningDoorAnimator;
 
         private Vector3 _winningEndPosition => _winningDoor.position;
 
@@ -41,6 +40,9 @@ namespace STGO.Gameplay
         public event Action OnShoot;
         public event Action OnCharging;
         public event Action OnMaxChargingReached;
+
+        public event Action OnWin;
+        public event Action OnLose;
 
         private void Start()
         {
@@ -65,6 +67,26 @@ namespace STGO.Gameplay
             OnCharging += Charge;
             OnMaxChargingReached += HandleDefeat;
             _projectile.OnHit += CheckPath;
+        }
+
+        public void Setup(float chargingSpeed, float chargeMax, float shootDuration, float winningAnimationDuration, LayerMask obstaclesLayers)
+        {
+            _chargingSpeed = chargingSpeed;
+            _chargeMax = chargeMax;
+            _shootDuration = shootDuration;
+            _winningTweenDuration = winningAnimationDuration;
+            _obstaclesLayers = obstaclesLayers;
+        }
+
+        public void SetWinningDoor(Transform winningDoor, Animator animator)
+        {
+            _winningDoor = winningDoor;
+            _winningDoorAnimator = animator;
+        }
+
+        public void SetProjectile(ParticleSystem[] bigExplosions, ParticleSystem[] smallExplosions)
+        {
+            _projectile.SetVFX(bigExplosions, smallExplosions);
         }
 
         private void CheckPath()
@@ -111,14 +133,14 @@ namespace STGO.Gameplay
         {
             _playerView.MoveTo(_winningEndPosition, _winningTweenDuration);
             _winningDoorAnimator.Play("Open");
-            _gameStateManager.UpdateState(GameState.Victory);
+            OnWin?.Invoke();
         }
 
         private void HandleDefeat()
         {
             _isInputEnabled = false;
             _playerView.Lose();
-            _gameStateManager.UpdateState(GameState.Loss);
+            OnLose?.Invoke();
         }
 
         private void Shoot()
@@ -133,11 +155,6 @@ namespace STGO.Gameplay
             {
                 _projectile.LaunchTo(_winningEndPosition, _shootDuration);
             }
-        }
-
-        private void ResetLastCharge()
-        {
-            throw new NotImplementedException();
         }
 
         private void Charge()

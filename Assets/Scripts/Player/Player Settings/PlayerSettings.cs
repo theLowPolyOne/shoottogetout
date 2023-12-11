@@ -5,6 +5,14 @@ namespace STGO.Gameplay
     [CreateAssetMenu(menuName = "STGO/Game Settings/Player Settings")]
     public class PlayerSettings : ScriptableObject, IPlayerSettings
     {
+        [Header("BASE:")]
+
+        [SerializeField] private Player _playerPrefab;
+        public Player PlayerPrefab => _playerPrefab;
+
+        [SerializeField] private Vector3 _startPosition;
+        public Vector3 StartPosition => _startPosition;
+
         [Header("CHARGING:")]
 
         [Tooltip("The speed at which the projectile increases and the player decreases while charging a shot")]

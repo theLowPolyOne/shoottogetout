@@ -39,6 +39,12 @@ namespace STGO.Gameplay
             gameObject.SetActive(false);
         }
 
+        public void SetVFX(ParticleSystem[] bigExplosions, ParticleSystem[] smallExplosions)
+        {
+            _bigExplosions = bigExplosions;
+            _smallExplosions = smallExplosions;
+        }
+
         public void PrepareToLaunch()
         {
             gameObject.SetActive(true);

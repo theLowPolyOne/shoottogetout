@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90cd7584d39022843983c90da74cfa9e, type: 3}
   m_Name: Player Settings
   m_EditorClassIdentifier: 
-  _chargingSpeed: 0.1
+  _playerPrefab: {fileID: 6156053495208616341, guid: f7587fb9a39857c4ba65aebcc8ede297,
+    type: 3}
+  _startPosition: {x: 0, y: 0, z: 0}
+  _chargingSpeed: 0.2
   _chargeMax: 0.8
   _shootDuration: 2
   _obstaclesLayers:
     serializedVersion: 2
     m_Bits: 64
-  _winningAnimationDuration: 2
+  _winningAnimationDuration: 5
