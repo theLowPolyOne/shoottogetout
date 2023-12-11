@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8e469d4191a9bd43b7952a955380886, type: 3}
+  m_Name: Obstacle Provider
+  m_EditorClassIdentifier: 
+  _obstacles: []
+  _animatedObstacles:
+  - {fileID: 6416989972584251805, guid: d3a361d1f2b01c849b5cdb916045adb5, type: 3}
+  - {fileID: 6416989972584251805, guid: 6d9e7c08bdee23f4b8f09ab88e2d12ab, type: 3}
+  - {fileID: 6416989972584251805, guid: c6f880d03f79912458d2605755ed6349, type: 3}
+  _standingIdleAnimations:
+  - {fileID: 7400000, guid: 169a0b58219e3534a8dbaa542a3ad99a, type: 2}
+  - {fileID: 7400000, guid: 7250564c373d7ae469073f51bc4f41f5, type: 2}
+  - {fileID: 7400000, guid: fff9eb05f569fe247b51430b0beba683, type: 2}
+  - {fileID: 7400000, guid: d7c515309506ef84eb0e104bd80507d4, type: 2}
+  _standingDestroyAnimations:
+  - {fileID: 7400000, guid: cebf6db7b7f0bbe41a4fc8d35054d6ed, type: 2}
+  - {fileID: 7400000, guid: 394f2dbbd690498428aa065c5fb7e018, type: 2}
+  - {fileID: 7400000, guid: b7f5ab10b9c2e0f48a970ee764cb081a, type: 2}
+  _sittingIdleAnimations:
+  - {fileID: 7400000, guid: ffa30e7b9d5994541b80448c8837a35a, type: 2}
+  - {fileID: 7400000, guid: e7634736241123f4f91121f25ff01d84, type: 2}
+  _sittingDestroyAnimations:
+  - {fileID: 7400000, guid: 95bcde8a48c67cc41afe53a09ec05257, type: 2}

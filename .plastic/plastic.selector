@@ -1,0 +1,4 @@
+repository "ShootToGetOut@HyperCasualProjects@cloud"
+  path "/"
+    br "/main"
+    co "/main"
