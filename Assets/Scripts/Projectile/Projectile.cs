@@ -68,6 +68,7 @@ namespace STGO.Gameplay
             _isReadyToLaunch = false;
             _transform.DOMove(endPosition, duration)
                 .OnComplete(ResetToDefault);
+            OnHit?.Invoke();
         }
 
         private void CheckDistanceToObstacle(IObstacle obstacle)
